@@ -1,0 +1,92 @@
+#description {
+    font-style: italic;
+}
+main {
+    max-width: 1120px;
+    margin: 3rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+}
+h1 {
+    font: var(--H1);
+}
+h2 {
+    font: var(--H2);
+}
+
+/*section Banner*/
+.banner .title-container{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.banner-img{
+    margin-top: 40px;
+    margin-bottom: 24px;
+} 
+.banner-img img{
+    width: 100%;
+    border-radius: 28px;
+}
+
+/*section list*/
+section > div:first-child {
+    margin-bottom: 64px;
+}
+section ol {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+.content .title-list {
+    list-style-position: inside;
+    font: var(--H3);
+}
+.content .title-list h3 {
+    display: inline;
+}
+
+/*images*/
+.container-img {
+    height: 350px;
+    overflow: hidden;
+}
+.container-img img {
+    border-radius: 28px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*container*/
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.container ul {
+    list-style: none; /* Remove os bullets padrão */
+    padding: 0; /* Remove o padding padrão */
+}
+.container ul li {
+    position: relative; /* Para posicionar o pseudo-elemento */
+    padding-left: 12px; /* Espaço para o bullet */
+}
+.container ul li::before {
+    content: ""; /* Cria um conteúdo vazio */
+    position: absolute; /* Posiciona absolutamente */
+    left: 0; /* Alinha à esquerda */
+    top: 50%; /* Centraliza verticalmente */
+    transform: translateY(-50%); /* Ajusta a posição vertical */
+    width: 5px; /* Largura da bolinha */
+    height: 5px; /* Altura da bolinha */
+    background-color: black; /* Cor da bolinha preenchida */
+    border-radius: 50%; /* Torna a bolinha redonda */
+}
+
+/*footer*/
+footer {
+    padding: 40px;
+}
