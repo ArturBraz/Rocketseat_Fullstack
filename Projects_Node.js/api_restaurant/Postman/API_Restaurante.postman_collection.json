@@ -1,0 +1,188 @@
+{
+	"info": {
+		"_postman_id": "1e17844d-48d1-4e54-8ebd-d4aa448301f1",
+		"name": "API_Restaurante",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27867837"
+	},
+	"item": [
+		{
+			"name": "products Copy",
+			"item": [
+				{
+					"name": "Index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/{{PRODUCTS}}?name=refri",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"{{PRODUCTS}}"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "refri"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Petit gâteau de chocolate com sorvete\",\r\n    \"price\":65.90\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/{{PRODUCTS}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Petit gâteau de chocolate com sorvete de baunilha\",\r\n    \"price\":67.50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/{{PRODUCTS}}/33"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Blue Moon - Vodka\",\r\n    \"price\":67.50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/{{PRODUCTS}}/33"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tables Copy",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{BASE_URL}}/{{TABLES}}"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tables sessions Copy",
+			"item": [
+				{
+					"name": "Open",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"table_id\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/{{TABLES_SESSIONS}}"
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{BASE_URL}}/{{TABLES_SESSIONS}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Close",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": "{{BASE_URL}}/{{TABLES_SESSIONS}}/4"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orders Copy",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"table_session_id\": 4,\r\n    \"product_id\": 31,\r\n    \"quantity\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/{{ORDERS}}"
+					},
+					"response": []
+				},
+				{
+					"name": "IndexBySession",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{BASE_URL}}/{{ORDERS}}/table-session/4"
+					},
+					"response": []
+				},
+				{
+					"name": "ShowByTableSession",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{BASE_URL}}/{{ORDERS}}/table-session/4/total"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

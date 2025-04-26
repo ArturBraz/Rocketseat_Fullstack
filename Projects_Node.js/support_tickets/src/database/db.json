@@ -1,0 +1,22 @@
+{
+  "tickets": [
+    {
+      "id": "805c37fa-efe7-451e-b500-d8f8c19045f0",
+      "equipment": "Headset",
+      "description": "Apenas o lado direito funcionando.",
+      "user_name": "Artur",
+      "status": "closed",
+      "created_at": "2025-01-02T01:53:48.650Z",
+      "updated_at": "2025-01-02T01:53:48.650Z"
+    },
+    {
+      "id": "1d8e30e6-7817-48ca-be93-859ba50e1893",
+      "equipment": "Monitor",
+      "description": "Listra colorida na tela",
+      "user_name": "August",
+      "status": "closed",
+      "created_at": "2025-01-03T03:34:14.956Z",
+      "updated_at": "2025-01-03T03:34:14.956Z"
+    }
+  ]
+}

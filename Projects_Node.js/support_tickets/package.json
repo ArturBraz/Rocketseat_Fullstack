@@ -1,0 +1,13 @@
+{
+  "name": "support_tickets",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "description": "API de gerenciamento de tickets de suporte",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/server.js"
+  },
+  "keywords": [],
+  "author": "Artur Braz",
+  "license": "ISC"
+}
