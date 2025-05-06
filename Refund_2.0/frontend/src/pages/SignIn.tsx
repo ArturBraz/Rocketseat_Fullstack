@@ -1,17 +1,45 @@
 import { useActionState } from "react";
 import { Button } from "../components/Button";
 import { Input } from "../components/Input";
+import { z, ZodError } from "zod";
+import { api } from "../services/api";
+import { AxiosError } from "axios";
+import { useAuth } from "../hooks/useAuth";
+
+const signInScheme = z.object({
+  email: z.string().email({ message: "Email inválido" }),
+  password: z.string().trim().min(1, { message: "Informe uma senha" }),
+});
 
 export function SignIn() {
-  const [state, formAction, isLoading] = useActionState(onSignIn, {email:"",password:""});
+  const [state, formAction, isLoading] = useActionState(onSignIn, null);
+  const auth = useAuth();
 
-  async function onSignIn(prevState: any, formData: FormData) {
-    const email = formData.get("email");
-    const password = formData.get("password");
+  async function onSignIn(_: any, formData: FormData) {
+    try {
+      const data = signInScheme.parse({
+        email: formData.get("email"),
+        password: formData.get("password"),
+      });
 
-    // console.log(prevState);
+      const response = await api.post("sessions", data);
+      auth.save({
+        token: response.data.token,
+        user: response.data.userWithoutPassword
+      });
 
-    return {email,password}
+    } catch (error) {
+      console.log(error);
+
+      if (error instanceof ZodError) {
+        return { message: error.issues[0].message };
+      }
+      if (error instanceof AxiosError) {
+        return { message: error.response?.data.message };
+      }
+
+      return { message: "Não foi possivel entrar!" };
+    }
   }
 
   return (
@@ -22,7 +50,6 @@ export function SignIn() {
         type="email"
         placeholder="seu@email.com"
         name="email"
-        defaultValue={String(state?.email)}
       />
 
       <Input
@@ -31,9 +58,11 @@ export function SignIn() {
         type="password"
         placeholder="123456"
         name="password"
-        defaultValue={String(state?.password)}
-
       />
+
+      <p className="text-sm text-red-600 text-center my-4 font-medium">
+        {state?.message}
+      </p>
 
       <Button type="submit" isLoading={isLoading}>
         Entrar
